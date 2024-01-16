@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "SRT Macro",
   "description": "SRT 자동 예약 매크로",
   "version": "1.0.10",
@@ -7,7 +7,7 @@
     "https://etk.srail.kr/"
   ],
   "icons": {
-      "128": "images/icon128.png"
+    "128": "images/icon128.png"
   },
   "content_scripts": [ {
     "all_frames": true,
@@ -16,11 +16,12 @@
     "run_at": "document_end"
   }],
   "background": {
-    "page": "background.html"
+    "service_worker": "background.html"
   },
-  "web_accessible_resources": [
-    "images/btn_start.png", "images/btn_stop.png", "assets/tada.mp3"
-  ],
+  "web_accessible_resources": [{
+    "resources": ["images/btn_start.png", "images/btn_stop.png", "assets/tada.mp3"],
+    "matches": ["https://*/*"]
+  }],
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
